@@ -4,22 +4,17 @@
 Selecciona la opción más adecuada para cada pregunta.
 
 **1. ¿Cuál es la función principal del archivo `dbt_project.yml`?**
+    a) Definir la configuración de las credenciales de la base de datos.
     b) Configurar la estructura del proyecto dbt, incluyendo rutas de modelos, macros, seeds, variables y hooks.
-    
-   
+    c) Almacenar los resultados de las pruebas de los modelos.
+    d) Ejecutar los modelos dbt en un entorno de producción.
 
-    
 **2. En dbt, ¿qué significa el término "materialización" (materialization)?**
-    a) El proceso de convertir el código SQL de dbt en objetos de base de datos como tablas o vistas. 
-    
-    
-    Existen distintos tipo de materialización:
-    *** table
-    *** view
-    *** incremental
-    *** ephemeral
-    *** materialized view
-    Notemos qué
+    a) El proceso de convertir el código SQL de dbt en objetos de base de datos como tablas o vistas.
+    b) La forma en que dbt gestiona las dependencias entre modelos.
+    c) La estrategia de versionado de los modelos dbt.
+    d) La manera en que dbt interactúa con el sistema de control de versiones.
+
 
 **3. ¿Cuál de las siguientes materializaciones es la más adecuada para un modelo que contiene datos que cambian frecuentemente y necesitas acceder a la versión más actualizada?**
     a) `table`
