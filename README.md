@@ -9,7 +9,7 @@ Selecciona la opción más adecuada para cada pregunta.
     Ojo, notemos que en el archivo `dbt_project.yml` no se pueden declarar propiedades como las de las macros (para eso se utiliza el archivo `properties.yml`), sino que se enfoca en la configuración la estructura, como en qué directorios están ciertos recursos. Aquí muestro parte de un ejemplo básico sobre el tipo de dato que busca cada configuración (aquí en su mayoría son paths de directorios):
 
 
-    ```
+    
     name: string
 
     config-version: 2
@@ -30,7 +30,6 @@ Selecciona la opción más adecuada para cada pregunta.
     packages-install-path: directorypath
     
     clean-targets: [directorypath]
-    ```
 
     
 **2. En dbt, ¿qué significa el término "materialización" (materialization)?**
