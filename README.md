@@ -4,32 +4,9 @@
 Selecciona la opción más adecuada para cada pregunta.
 
 **1. ¿Cuál es la función principal del archivo `dbt_project.yml`?**
-    b) Configurar la estructura del proyecto dbt, incluyendo rutas de modelos, macros, seeds, variables y hooks. 
+    b) Configurar la estructura del proyecto dbt, incluyendo rutas de modelos, macros, seeds, variables y hooks.
     
-    Ojo, notemos que en el archivo `dbt_project.yml` no se pueden declarar propiedades como las de las macros (para eso se utiliza el archivo `properties.yml`), sino que se enfoca en la configuración la estructura, como en qué directorios están ciertos recursos. Aquí muestro parte de un ejemplo básico sobre el tipo de dato que busca cada configuración (aquí en su mayoría son paths de directorios):
-
-
-    
-    name: string
-
-    config-version: 2
-    version: version
-    
-    profile: profilename
-    
-    model-paths: [directorypath]
-    seed-paths: [directorypath]
-    test-paths: [directorypath]
-    analysis-paths: [directorypath]
-    macro-paths: [directorypath]
-    snapshot-paths: [directorypath]
-    docs-paths: [directorypath]
-    asset-paths: [directorypath]
-    function-paths: [directorypath]
-    
-    packages-install-path: directorypath
-    
-    clean-targets: [directorypath]
+   
 
     
 **2. En dbt, ¿qué significa el término "materialización" (materialization)?**
