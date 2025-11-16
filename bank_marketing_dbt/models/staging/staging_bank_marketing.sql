@@ -15,6 +15,7 @@ WITH source_data AS (
         education,
 
         -- Convertimos todas las variables con entradas tipo yes/no en True/False (Booleanas)
+        -- Este es un cambio para probar CI
         (CASE 
             WHEN "default" = 'yes' THEN true 
             WHEN "default" = 'unknown' THEN null
