@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: kpi_bank_marketing
+    description: "Data mart final que agrega KPIs por segmento de cliente."
+    
+    columns:
+      - name: age_group
+        tests:
+          - not_null
+          
+      - name: job
+        tests:
+          - not_null
+
+      - name: total_contacts
+        description: "Número total de contactos para el segmento"
+        tests:
+          - not_null
+          # Cada grupo debe tener al menos 1 elemento (por la forma en que se creó)
+          - dbt_utils.expression_is_true:
+              expression: ">= 1"
+
+      - name: successful_contacts
+        description: "Número de conversiones"
+        tests:
+          - not_null
+          # No puede ser negativo (pero sí 0)
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+      - name: conversion_rate
+        description: "Tasa de conversión (0.0 a 1.0)"
+        tests:
+          - not_null
+          # La tasa debe estar entre 0 y 1
+          - dbt_utils.expression_is_true:
+              expression: "BETWEEN 0 AND 1"

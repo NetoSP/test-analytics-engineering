@@ -1,0 +1,15 @@
+
+version: 2
+
+sources:
+  - name: bank_marketing
+    database: dbt-project-478216
+    schema: "{{ var('schema_name', 'bank_marketing_raw')}}"
+    tables:
+      - name: raw_bank_marketing
+        description: "External table for bank marketing."
+        columns:
+          - name: y
+            test:
+              # Prueba básica en nuestro conjunto de datos crudos
+              - not_null
