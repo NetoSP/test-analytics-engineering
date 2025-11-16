@@ -1,0 +1,60 @@
+# Nombre del workflow
+name: dbt CI Checks
+
+# Cuándo ejecutar esto:
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-dbt-ci:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 1. Checkout Code
+        uses: actions/checkout@v3
+
+      - name: 2. Authenticate to Google Cloud
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: 3. Setup dbt Environment (Python)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: 4. Install dbt and Adapter
+        run: |
+          pip install dbt-bigquery
+
+      # Crea un archivo profiles.yml temporal
+      # para la máquina virtual usando los secretos.
+      - name: 5. Set up dbt profiles.yml
+        run: |
+          echo "bank_marketing_dbt:
+            target: prod # Apuntamos al 'target' de producción
+            outputs:
+              prod:
+                type: bigquery
+                method: service-account
+                
+                project: ${{ secrets.GCP_PROJECT_ID }}
+                dataset: dbt_ci_build 
+                threads: 4
+                keyfile: /home/runner/work/gcp-sa-key.json
+                location: US 
+          " > ~/.dbt/profiles.yml
+          
+          # Escribe el secreto de la llave en el archivo que espera dbt
+          echo "${{ secrets.GCP_SA_KEY }}" > /home/runner/work/gcp-sa-key.json
+
+      # Instalar paquetes (como dbt_utils)
+      - name: 6. Install dbt Packages
+        run: dbt deps
+
+      # ¡La prueba!
+      # Si CUALQUIER prueba falla, todo este workflow fallará.
+      - name: 7. Run and Test All Models (dbt build)
+        run: dbt build

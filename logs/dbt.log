@@ -1,0 +1,30 @@
+[0m17:33:57.277510 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002079265CEC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020792EF5810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002079457BD90>]}
+
+
+============================== 17:33:57.300100 | f70ab825-a2c0-4b42-a58e-915b4dca6215 ==============================
+[0m17:33:57.300100 [info ] [MainThread]: Running with dbt=1.11.0-b4
+[0m17:33:57.300641 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'no_print': 'None', 'profiles_dir': 'C:\\Users\\USER\\.dbt', 'write_json': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'indirect_selection': 'eager', 'partial_parse': 'True', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs', 'version_check': 'True', 'use_experimental_parser': 'False', 'quiet': 'False', 'introspect': 'True', 'empty': 'None', 'log_cache_events': 'False', 'debug': 'False', 'log_format': 'default', 'invocation_command': 'dbt init bank_marketing_dbt', 'printer_width': '80', 'target_path': 'None'}
+[0m17:33:57.446777 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\USER\.dbt
+[0m17:33:57.453615 [debug] [MainThread]: Starter project path: C:\Users\USER\Documents\DeAcero\proyect\venv\Lib\site-packages\dbt\include\starter_project
+[0m17:33:57.471886 [info ] [MainThread]: 
+Your new dbt project "bank_marketing_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m17:33:57.472285 [info ] [MainThread]: Setting up your profile.
+[0m17:50:01.417198 [info ] [MainThread]: Profile bank_marketing_dbt written to C:\Users\USER\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m17:50:01.420327 [debug] [MainThread]: Command `dbt init` succeeded at 17:50:01.420114 after 964.24 seconds
+[0m17:50:01.420879 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000207C075A3F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000207C0756E70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000207C06A7BD0>]}
+[0m17:50:01.421470 [debug] [MainThread]: Flushing usage events
+[0m17:50:02.162148 [debug] [MainThread]: An error was encountered while trying to flush usage events
