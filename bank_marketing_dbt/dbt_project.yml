@@ -1,0 +1,32 @@
+name: 'bank_marketing_dbt'
+version: '1.0.0'
+config-version: 2
+
+# Perfil utilizado por defecto
+profile: 'bank_marketing_dbt'
+
+# Configuracióni de paths importantes
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# Directorios a eliminar durante la limpieza
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuración específica para los modelos
+models:
+  bank_marketing_dbt:
+    # Por defecto, todo en la carpeta 'staging' será una VISTA
+    staging:
+      +materialized: view
+      +schema: staging 
+      
+    # Por defecto, todo en la carpeta 'marts' será una TABLA
+    marts:
+      +materialized: table
+      +schema: marts # Los guardará en un dataset 'marts'

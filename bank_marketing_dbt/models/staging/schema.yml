@@ -1,0 +1,95 @@
+version: 2
+
+sources:
+  - name: bank_marketing_raw
+    database: "dbt-project-478216"
+    schema: "bank_marketing_raw"
+    tables:
+      - name: raw_bank_marketing
+        description: "Tabla sin procesar de bank-additional-full.csv"
+
+models:
+  - name: staging_bank_marketing
+    description: "staging_bank_marketing después de hacer limpieza"
+    
+    columns:
+      - name: age
+        tests:
+          - not_null
+      
+      - name: job
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["admin.","blue-collar","entrepreneur","housemaid","management","retired","self-employed","services","student","technician","unemployed","unknown"]
+
+      - name: marital
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['married', 'single', 'divorced', 'unknown']
+
+      - name: education
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["basic.4y","basic.6y","basic.9y","high.school","illiterate","professional.course","university.degree","unknown"]
+
+      - name: has_credit_in_default
+        tests:
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
+
+      - name: has_housing_loan
+        tests:
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
+      
+      - name: has_personal_loan
+        tests:
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
+
+      - name: contact_method
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["cellular","telephone"]
+
+      - name: previous_campaign_outcome
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["failure","nonexistent","success"]
+
+      - name: has_subscribed
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
+
+      - name: emp_var_rate
+        tests:
+          - not_null
+      - name: cons_price_idx
+        tests:
+          - not_null
+      - name: cons_conf_idx
+        tests:
+          - not_null
+      - name: euribor3m
+        tests:
+          - not_null
+      - name: nr_employed
+        tests:
+          - not_null
